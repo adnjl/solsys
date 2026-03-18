@@ -114,7 +114,7 @@
   };
 
   solSys.greeter = {
-    backend = "greetd-tuigreet";
+    backend = "greetd";
     session = "uwsm start hyprland-uwsm.desktop";
   };
 

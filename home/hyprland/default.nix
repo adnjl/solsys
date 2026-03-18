@@ -72,7 +72,7 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 0;
-        layout = osConfig.solSys.hyprland.layout;
+        layout = osConfig.solSys.desktop.hyprland.layout;
       };
 
       cursor.hide_on_key_press = true;

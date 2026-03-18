@@ -64,7 +64,7 @@
   };
 
   solSys.greeter = {
-    backend = "greetd-tuigreet";
+    backend = "greetd";
     session = "Hyprland";
   };
 

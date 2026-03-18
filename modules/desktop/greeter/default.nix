@@ -26,7 +26,7 @@ in
   };
 
   config = lib.mkIf (cfg.backend != "none") {
-    services.greetd = lib.mkIf (cfg.backend == "greetd-tuigreet") {
+    services.greetd = lib.mkIf (cfg.backend == "greetd") {
       enable = true;
       settings.default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${cfg.session} --remember";
@@ -34,7 +34,7 @@ in
       };
     };
 
-    systemd.services.greetd = lib.mkIf (cfg.backend == "greetd-tuigreet") {
+    systemd.services.greetd = lib.mkIf (cfg.backend == "greetd") {
       serviceConfig = {
         Type = "idle";
         StandardInput = "tty";

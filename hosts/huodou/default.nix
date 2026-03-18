@@ -43,7 +43,7 @@
   solSys.desktop.hyprland.layout = "scrolling";
 
   solSys.greeter = {
-    backend = "greetd-tuigreet";
+    backend = "greetd";
     session = "Hyprland";
   };
 
