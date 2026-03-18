@@ -1,4 +1,4 @@
-# solSys 🌌
+# solSys
 
 A modular NixOS / nix-darwin configuration framework built around opt-in modules and a unified `solSys.*` option namespace.
 
@@ -14,10 +14,10 @@ A modular NixOS / nix-darwin configuration framework built around opt-in modules
 ## Structure
 
 ```
-hosts/<n>/        per-machine config
+hosts/            per-machine config
 modules/          opt-in system/desktop/platform modules
 home/             shared home-manager config (shell, hyprland, programs)
-users/<n>/        per-user home.nix
+users/            per-user home.nix
 lib/              builder functions (keeps flake.nix clean)
 components/       assets (GRUB themes etc.)
 ```
@@ -27,7 +27,7 @@ components/       assets (GRUB themes etc.)
 **1.** `flake.nix` — two lines:
 ```nix
 nixosConfigurations = lib.buildNixosHosts {
-  hosts.mymachine = { system = "x86_64-linux"; user = "alice"; };
+  hosts.mymachine = { system = "x86_64-linux"; user = "monko"; };
 };
 ```
 
@@ -79,14 +79,3 @@ nh os switch -H mymachine
 | `solSys.desktop.wm` | `"hyprland"` `"sway"` `"niri"` `"i3"` `"none"` |
 | `solSys.theming.colorScheme` | `"kanagawa-dragon"` `"catppuccin-mocha"` `"gruvbox-dark"` `"rose-pine"` |
 | `solSys.audio.backend` | `"pipewire"` `"pulseaudio"` `"none"` |
-
-Laptop form factor enables TLP, libinput touchpad, lid switch, backlight, and battery alerts automatically — all individually overrideable via `solSys.laptop.*`.
-
-## Daily commands
-
-```bash
-nh os switch           # apply immediately
-nh os boot             # apply on next boot
-nix flake update       # update all inputs
-nix-collect-garbage -d # garbage collect
-```
