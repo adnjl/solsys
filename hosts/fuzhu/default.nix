@@ -88,7 +88,7 @@
   };
 
   solSys.desktop = {
-    wm = "hyprland";
+    wm = "niri";
     monitor = [ "eDP-1, 1920x1200@75, 0x0, 1" ];
     gaps = {
       inner = 4;
@@ -115,7 +115,7 @@
 
   solSys.greeter = {
     backend = "greetd";
-    session = "uwsm start hyprland-uwsm.desktop";
+    session = "niri-session";
   };
 
   solSys.theming = {

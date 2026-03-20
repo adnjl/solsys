@@ -24,6 +24,7 @@ in
   };
 
   config = lib.mkIf active {
+    programs.niri.enable = true;
     environment.systemPackages = [
       cfg.package
       pkgs.xwayland-satellite

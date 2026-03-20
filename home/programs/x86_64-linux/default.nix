@@ -13,7 +13,7 @@ in
     commonPrograms
     inputs.spicetify-nix.homeManagerModules.default
     ./swaync
-    ./rofi
+    # ./rofi
   ];
 
   services.easyeffects = {
@@ -24,6 +24,8 @@ in
   services.syncthing.enable = true;
 
   programs.fzf.enable = true;
+
+  programs.vicinae.enable = true;
 
   programs.spicetify =
     let

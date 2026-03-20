@@ -11,7 +11,7 @@
     ./binds.nix
     ./windowrules.nix
     ./addons
-    ./waybar
+    ../waybar
   ];
 
   wayland.windowManager.hyprland = {

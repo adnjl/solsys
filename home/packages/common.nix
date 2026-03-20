@@ -49,4 +49,5 @@ pkgs: with pkgs; [
   nss
   meson
   papirus-icon-theme
+  xclip
 ]

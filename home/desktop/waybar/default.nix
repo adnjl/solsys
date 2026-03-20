@@ -18,10 +18,14 @@
         modules-left = [
           "custom/menu"
           "custom/separator#blank_2"
+        ];
+
+        modules-center = [
           "clock"
         ];
         modules-right = [
           "battery"
+          "custom/separator#blank"
           "custom/swaync"
           "custom/separator#blank"
           "tray"
@@ -50,17 +54,19 @@
           scroll-step = 5.0;
           smooth-scrolling-threshold = 1;
           player-icons = {
-            default = "";
-            spotify = "";
-            mpv = "󰐹";
-            vlc = "󰕼";
-            firefox = "";
-            chromium = "";
+            "chromium" = "";
+            "default" = "";
+            "firefox" = "";
+            "kdeconnect" = "";
+            "mopidy" = "";
+            "mpv" = "󰐹";
+            "spotify" = "";
+            "vlc" = "󰕼";
           };
           status-icons = {
-            paused = "󰐎";
-            playing = "";
-            stopped = "";
+            "paused" = "󰐎";
+            "playing" = "";
+            "stopped" = "";
           };
           max-length = 30;
         };
@@ -70,18 +76,23 @@
           format-bluetooth = "{icon} 󰂰 {volume}%";
           format-muted = "󰖁";
           format-icons = {
-            headphone = " ";
-            headset = " ";
-            phone = "";
+            "headphone" = " ";
+            "hands-free" = " ";
+            "headset" = " ";
+            "phone" = "";
+            "portable" = "";
+            "car" = "";
             default = [
-              ""
-              ""
+              ""
+              ""
               "󰕾"
-              ""
+              ""
             ];
+            ignored-sinks = [ "Easy Effects Sink" ];
           };
           scroll-step = 5.0;
           on-click = "pavucontrol -t 3";
+          tooltip-format = "{icon} {desc} | {volume}%";
           smooth-scrolling-threshold = 1;
         };
         "battery" = {
@@ -139,14 +150,14 @@
           tooltip = true;
           format = "{icon} {}";
           format-icons = {
-            notification = "<span foreground='red'><sup></sup></span>";
-            none = "";
-            dnd-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-none = "";
-            inhibited-notification = "<span foreground='red'><sup></sup></span>";
-            inhibited-none = "";
-            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-inhibited-none = "";
+            notification = "<span foreground='red'><sup></sup></span>";
+            none = "";
+            dnd-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-none = "";
+            inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            inhibited-none = "";
+            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-inhibited-none = "";
           };
           return-type = "json";
           exec-if = "which swaync-client";

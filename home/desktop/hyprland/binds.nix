@@ -5,7 +5,7 @@ in
 {
   wayland.windowManager.hyprland.settings = {
     bind = [
-      "$mod, B, exec, firefox-devedition"
+      "$mod, B, exec, firefox"
       "$mod, T, exec, kitty"
       "$mod, E, exec, dolphin"
       "$mod, R, exec, pavucontrol"
