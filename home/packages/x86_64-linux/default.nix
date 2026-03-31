@@ -16,6 +16,7 @@ in
       vesktop
       zoom-us
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+      logisim-evolution
 
       # wayland desktop utils
       wl-clipboard

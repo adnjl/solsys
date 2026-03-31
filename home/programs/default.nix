@@ -111,7 +111,7 @@
   };
   textfox = {
     enable = true;
-    profile = "aden";
+    profiles = [ "aden" ];
     config = {
       # background.color = "#${config.lib.stylix.colors.base00}";
       # border.color = "#${config.lib.stylix.colors.base0D}";

@@ -62,7 +62,17 @@
 
     battery.alertPercent = 15;
   };
-
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = [ "*" ];
+      settings = {
+        main = {
+          muhenkan = "leftalt";
+        };
+      };
+    };
+  };
   solSys.boot = {
     bootloader = "grub";
     grubTheme = ../../components/grub-themes/virtuaverse;
@@ -119,7 +129,7 @@
   };
 
   solSys.theming = {
-    wallpaper = "${inputs.wallpapers}/shrine-dark.jpg";
+    wallpaper = "${inputs.wallpapers}/desk.jpg";
     colorScheme = "kanagawa-dragon";
     cursor = {
       name = "Bibata-Modern-Ice";

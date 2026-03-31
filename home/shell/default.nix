@@ -13,7 +13,10 @@
       listen_on = "unix:/tmp/kitty";
       scrollback_pager = ''nvim --noplugin -c "set signcolumn=no showtabline=0" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
     };
-    keybindings."kitty_mod+h" = "show_scrollback";
+    keybindings = {
+      "kitty_mod+h" = "show_scrollback";
+      "ctrl+v" = "paste_from_clipboard";
+    };
   };
 
   programs.wezterm = {

@@ -69,7 +69,7 @@
   };
 
   solSys.theming = {
-    wallpaper = "${inputs.wallpapers}/shrine-dark.jpg";
+    wallpaper = "${inputs.wallpapers}/desk.jpg";
     colorScheme = "kanagawa-dragon";
     cursor = {
       name = "Bibata-Modern-Ice";

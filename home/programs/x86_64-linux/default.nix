@@ -13,7 +13,7 @@ in
     commonPrograms
     inputs.spicetify-nix.homeManagerModules.default
     ./swaync
-    # ./rofi
+    ./rofi
   ];
 
   services.easyeffects = {

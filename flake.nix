@@ -38,14 +38,22 @@
       url = "github:Mic92/nix-ld";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+	flake-parts = {
+	  url = "github:hercules-ci/flake-parts";
+	  inputs.nixpkgs-lib.follows = "nixpkgs";
+	};
+
+	stylix = {
+	  url = "github:danth/stylix";
+	  inputs.nixpkgs.follows = "nixpkgs";
+	  inputs.flake-parts.follows = "flake-parts";
+	};
+
+	lanzaboote = {
+	  url = "github:nix-community/lanzaboote/v0.4.1";
+	  inputs.nixpkgs.follows = "nixpkgs";
+	  inputs.flake-parts.follows = "flake-parts";
+	};
     apple-silicon = {
       url = "github:tpwrules/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";

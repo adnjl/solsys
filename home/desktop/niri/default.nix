@@ -16,7 +16,8 @@
         keyboard = {
           xkb = {
             layout = if osConfig.solSys.form.type == "laptop" then "jp" else "us";
-            options = "ctrl:nocaps";
+            options =
+              if osConfig.solSys.form.type == "laptop" then "ctrl:nocaps,altwin:swap_alt_win" else "ctrl:nocaps";
           };
         };
 
@@ -44,7 +45,8 @@
         focus-ring = {
           enable = true;
           active = {
-            color = "#${config.lib.stylix.colors.base0D}";
+            # color = "#${config.lib.stylix.colors.base0D}";
+            color = "#69696c";
           };
           inactive = {
             color = "#${config.lib.stylix.colors.base02}";
@@ -82,7 +84,6 @@
             "server"
           ];
         }
-        { command = [ "xwayland-satellite" ]; }
         { command = [ "swaync" ]; }
         {
           command = [
@@ -91,12 +92,6 @@
             "-r"
           ];
         }
-        # {
-        #   command = [
-        #     "waypaper"
-        #     "--restore"
-        #   ];
-        # }
       ];
 
       binds = {
@@ -104,12 +99,23 @@
         "Super+B".action.spawn = [ "firefox" ];
         "Super+E".action.spawn = [ "dolphin" ];
         "Super+Space".action.spawn = [
-          # "rofi"
-          # "-show"
-          # "drun"
+          # "bash"
+          # "-c"
+          # "pkill -x rofi || rofi -show drun"
           "vicinae"
           "toggle"
         ];
+        "Super+Shift+P".action.spawn = [
+          "hyprpicker"
+          "-a"
+        ];
+        "Super+P".action.spawn = [
+          "bash"
+          "-c"
+          "grim -g \"$(slurp)\" - | swappy -f -"
+        ];
+
+        "Super+Shift+Backspace".action.spawn = [ "wlogout" ];
 
         "Super+Shift+Q".action.close-window = { };
         "Super+Return".action.do-screen-transition = { };
@@ -120,8 +126,10 @@
         "Super+J".action.focus-window-down = { };
         "Super+K".action.focus-window-up = { };
 
-        "Super+I".action.focus-workspace-up = { };
-        "Super+U".action.focus-workspace-down = { };
+        "Super+U".action.focus-workspace-up = { };
+        "Super+I".action.focus-workspace-down = { };
+        "Super+Shift+U".action.move-column-to-workspace-up = { };
+        "Super+Shift+I".action.move-column-to-workspace-down = { };
 
         "Super+Shift+H".action.move-column-left = { };
         "Super+Shift+L".action.move-column-right = { };
@@ -134,7 +142,7 @@
         "Super+F".action.maximize-column = { };
         "Super+Shift+F".action.fullscreen-window = { };
         "Super+W".action.toggle-window-floating = { };
-        "Super+Control+Tab".action.toggle-overview = { };
+        "Super+O".action.toggle-overview = { };
 
         "Super+Minus".action.set-column-width = "-10%";
         "Super+Equal".action.set-column-width = "+10%";
@@ -176,10 +184,23 @@
           "-t"
         ];
 
-        "Super+Shift+Backspace".action.spawn = [ "wlogout" ];
       };
 
       window-rules = [
+        # {
+        #   matches = [ { } ];
+        #   background-effect.blur = true;
+        # }
+        {
+          matches = [ { } ];
+          geometry-corner-radius = {
+            top-left = 4.0;
+            top-right = 4.0;
+            bottom-left = 4.0;
+            bottom-right = 4.0;
+          };
+          clip-to-geometry = true;
+        }
         {
           matches = [ { app-id = "org.kde.dolphin"; } ];
           open-floating = true;
@@ -201,16 +222,14 @@
       overview = {
         zoom = 0.75;
         backdrop-color = "#00000000";
-        workspace-shadow.enable = false;
       };
 
-      layer-rules = [
-        {
-          matches = [ { namespace = "^swww-daemon$"; } ];
-          place-within-backdrop = true;
-        }
-      ];
-
+      # layer-rules = [
+      #   {
+      #     matches = [ { namespace = "^wallpaper$"; } ];
+      #     place-within-backdrop = false;
+      #   }
+      # ];
     };
   };
 
