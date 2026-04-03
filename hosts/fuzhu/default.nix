@@ -68,7 +68,7 @@
       ids = [ "*" ];
       settings = {
         main = {
-          muhenkan = "leftalt";
+          muhenkan = "leftmeta";
         };
       };
     };

@@ -3,7 +3,7 @@
   home = {
     inherit username;
     homeDirectory = "/home/${username}";
-    stateVersion = "24.05";
+    stateVersion = "26.05";
   };
   home.file.".mozilla/firefox/aden/chrome" = {
     source = lib.mkForce ../components/firefox;

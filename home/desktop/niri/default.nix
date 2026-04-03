@@ -17,7 +17,8 @@
           xkb = {
             layout = if osConfig.solSys.form.type == "laptop" then "jp" else "us";
             options =
-              if osConfig.solSys.form.type == "laptop" then "ctrl:nocaps,altwin:swap_alt_win" else "ctrl:nocaps";
+              # if osConfig.solSys.form.type == "laptop" then "ctrl:nocaps,altwin:swap_alt_win" else "ctrl:nocaps";
+              if osConfig.solSys.form.type == "laptop" then "ctrl:nocaps" else "ctrl:nocaps";
           };
         };
 
@@ -224,12 +225,12 @@
         backdrop-color = "#00000000";
       };
 
-      # layer-rules = [
-      #   {
-      #     matches = [ { namespace = "^wallpaper$"; } ];
-      #     place-within-backdrop = false;
-      #   }
-      # ];
+      layer-rules = [
+        {
+          matches = [ { namespace = "^wallpaper$"; } ];
+          place-within-backdrop = true;
+        }
+      ];
     };
   };
 

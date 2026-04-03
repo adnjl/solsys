@@ -101,7 +101,8 @@ in
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
-      MOZ_ENABLE_WAYLAND = "0";
+      MOZ_ENABLE_WAYLAND = "1";
+      LIBVA_DRIVER_NAME = "iHD";
     };
 
     networking.networkmanager.enable = true;
