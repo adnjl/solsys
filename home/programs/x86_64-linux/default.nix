@@ -26,6 +26,7 @@ in
   programs.fzf.enable = true;
 
   programs.vicinae.enable = true;
+  stylix.targets.vicinae.enable = false;
 
   programs.spicetify =
     let

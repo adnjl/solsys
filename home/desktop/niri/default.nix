@@ -25,10 +25,13 @@
         touchpad = {
           tap = true;
           natural-scroll = false;
-          accel-speed = if osConfig.solSys.form.type == "laptop" then 1.0 else 0.0;
-          accel-profile = if osConfig.solSys.form.type == "laptop" then "adaptive" else "flat";
+          accel-speed = 1.0;
+          accel-profile = "adaptive";
         };
-        mouse.accel-profile = "flat";
+        mouse = {
+          accel-speed = 1.0;
+          accel-profile = "adaptive";
+        };
       };
 
       outputs."eDP-1" = {
