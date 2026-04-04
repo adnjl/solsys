@@ -14,6 +14,12 @@ let
       users.${username} = import ../users/${username}/home.nix;
       sharedModules = [
         inputs.niri.homeModules.niri
+        (
+          { pkgs, ... }:
+          {
+            programs.niri.package = lib.mkForce pkgs.niri;
+          }
+        )
       ];
     };
 

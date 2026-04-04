@@ -26,10 +26,10 @@ in
   config = lib.mkIf active {
     programs.niri = {
       enable = true;
-      package = cfg.package;
+      package = lib.mkForce pkgs.niri;
     };
     environment.systemPackages = [
-      cfg.package
+      pkgs.niri
       pkgs.xwayland-satellite
       pkgs.wl-clipboard
       pkgs.grim
