@@ -16,9 +16,7 @@
         keyboard = {
           xkb = {
             layout = if osConfig.solSys.form.type == "laptop" then "jp" else "us";
-            options =
-              # if osConfig.solSys.form.type == "laptop" then "ctrl:nocaps,altwin:swap_alt_win" else "ctrl:nocaps";
-              if osConfig.solSys.form.type == "laptop" then "ctrl:nocaps" else "ctrl:nocaps";
+            options = "ctrl:nocaps";
           };
         };
 
@@ -35,6 +33,9 @@
       };
 
       outputs."eDP-1" = {
+        scale = 1.0;
+      };
+      outputs."HDMI-A-1" = {
         scale = 1.0;
       };
 

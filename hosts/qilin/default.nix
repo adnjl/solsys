@@ -22,7 +22,7 @@
   solSys.boot = {
     bootloader = "grub";
     grubTheme = ../../components/grub-themes/virtuaverse;
-    kernelBuild = "cachyos-gcc";
+    kernelBuild = "cachyos";
     luksDevices = [ "614153e3-61be-43f4-b833-d19e3d83db0a" ];
   };
 
@@ -44,8 +44,8 @@
   };
 
   solSys.desktop = {
-    wm = "hyprland";
-    monitor = [ "HDMI-A-1, 1920x1080@72, 0x0, 1" ];
+    wm = "niri";
+    monitor = [ "HDMI-A-1, 1600x900@72, 0x0, 1" ];
     gaps = {
       inner = 5;
       outer = 10;
@@ -65,7 +65,7 @@
 
   solSys.greeter = {
     backend = "greetd";
-    session = "Hyprland";
+    session = "niri-session";
   };
 
   solSys.theming = {
