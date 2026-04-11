@@ -6,7 +6,7 @@
 {
   imports = [
     ../../home/core.nix
-    ../../home/shell
+    ../../home/terminal
     ../../home/packages/${system}
   ];
 

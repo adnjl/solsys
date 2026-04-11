@@ -70,22 +70,6 @@
     enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
-    # plugins.mediainfo = pkgs.fetchFromGitHub {
-    #   owner = "Ape";
-    #   repo = "mediainfo.yazi";
-    #   rev = "c69314e80f5b45fe87a0e06a10d064ed54110439";
-    #   hash = "sha256-8xdBPdKSiwB7iRU8DJdTHY+BjfR9D3FtyVtDL9tNiy4=";
-    # };
-    # settings.plugin.prepend_previewers = [
-    #   {
-    #     mime = "{image,audio,video}/*";
-    #     run = "mediainfo";
-    #   }
-    #   {
-    #     mime = "application/x-subrip";
-    #     run = "mediainfo";
-    #   }
-    # ];
     shellWrapperName = "yy";
   };
 
@@ -113,10 +97,6 @@
     enable = true;
     profiles = [ "aden" ];
     config = {
-      # background.color = "#${config.lib.stylix.colors.base00}";
-      # border.color = "#${config.lib.stylix.colors.base0D}";
-      # font.family = config.stylix.fonts.monospace.name;
-      # font.accent = "#${config.lib.stylix.colors.base0D}";
       displayWindowControls = false;
       displayNavButtons = true;
       displaySidebarTools = false;

@@ -22,6 +22,8 @@ pkgs: with pkgs; [
   nurl
   go
   cargo
+  adoptopenjdk-icedtea-web
+  jdk
 
   mesa
   libGL

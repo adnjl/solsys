@@ -26,7 +26,7 @@ in
       pavucontrol
       waypaper
       swaybg
-      swww
+      awww
       pamixer
       brightnessctl
       chafa

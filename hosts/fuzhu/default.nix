@@ -10,6 +10,7 @@
     ../../modules/system/form
     ../../modules/system/gaming
     ../../modules/desktop/wm
+    ../../modules/desktop/shell
     ../../modules/desktop/greeter
     ../../modules/desktop/theming
     ../../modules/platform/linux
@@ -122,6 +123,8 @@
       }
     '';
   };
+
+  solSys.desktop.shell = "none";
 
   solSys.greeter = {
     backend = "greetd";
