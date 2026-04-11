@@ -27,8 +27,8 @@
           accel-profile = "adaptive";
         };
         mouse = {
-          accel-speed = 1.0;
-          accel-profile = "adaptive";
+          accel-speed = 0.75;
+          accel-profile = "flat";
         };
       };
 

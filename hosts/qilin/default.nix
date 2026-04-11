@@ -23,7 +23,12 @@
     bootloader = "grub";
     grubTheme = ../../components/grub-themes/virtuaverse;
     kernelBuild = "cachyos";
-    luksDevices = [ "614153e3-61be-43f4-b833-d19e3d83db0a" ];
+    luksDevices = [
+      {
+        uuid = "614153e3-61be-43f4-b833-d19e3d83db0a";
+        tpm2 = true;
+      }
+    ];
   };
 
   solSys.hardware = {
@@ -87,5 +92,5 @@
     options = "--delete-older-than 30d";
   };
 
-  systemd.tpm2.enable = false;
+  systemd.tpm2.enable = true;
 }
