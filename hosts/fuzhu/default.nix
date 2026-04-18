@@ -105,7 +105,7 @@
       inner = 4;
       outer = 6;
     };
-    blur = true;
+    # blur = true;
     tearing = true;
     terminal = "kitty";
     browser = "firefox-devedition";
@@ -123,7 +123,9 @@
       }
     '';
   };
-
+  solSys.desktop.niri = {
+    package = inputs.niri.packages.x86_64-linux.niri-unstable;
+  };
   solSys.desktop.shell = "none";
 
   solSys.greeter = {

@@ -52,4 +52,5 @@ pkgs: with pkgs; [
   meson
   papirus-icon-theme
   xclip
+  localsend
 ]

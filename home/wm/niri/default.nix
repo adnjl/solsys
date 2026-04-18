@@ -23,7 +23,7 @@
           accel-profile = "adaptive";
         };
         mouse = {
-          accel-speed = 1.0;
+          accel-speed = 0.5;
           accel-profile = "adaptive";
         };
       };
@@ -188,6 +188,13 @@
           ];
         };
 
+      # blur = {
+      #   passes = 3;
+      #   offset = 3.0;
+      #   noise = 0.02;
+      #   saturation = 1.5;
+      # };
+
       window-rules = [
         # {
         #   matches = [ { } ];
@@ -238,6 +245,6 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
-    configPackages = [ pkgs.niri ];
+    configPackages = [ osConfig.solSys.desktop.niri.package ];
   };
 }

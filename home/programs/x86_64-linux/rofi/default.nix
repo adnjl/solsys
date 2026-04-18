@@ -1,6 +1,7 @@
 { lib, config, ... }:
 {
   programs.rofi = {
+    enable = true;
     theme = lib.mkForce (
       let
         inherit (config.lib.formats.rasi) mkLiteral;

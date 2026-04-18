@@ -10,14 +10,14 @@
         passthrough = false;
         fixed-center = true;
         ipc = true;
-        height = 20;
+        height = 50;
         margin-right = 0;
         margin-left = 0;
         margin-top = 0;
 
         modules-left = [
+          "custom/separator#blank"
           "custom/menu"
-          "custom/separator#blank_2"
         ];
 
         modules-center = [
@@ -37,10 +37,11 @@
           "pulseaudio#microphone"
           "custom/separator#blank"
           "custom/power"
+          "custom/separator#blank"
         ];
 
         "clock" = {
-          format = "{:%H:%M - %d/%b}";
+          format = "{:%H:%M  %d %b}";
           tooltip = false;
         };
 
@@ -131,11 +132,10 @@
         };
 
         "custom/menu" = {
-          format = "{}";
-          exec = "echo ; echo 󱓟 app launcher";
+          format = " {}";
           interval = 86400;
           tooltip = true;
-          on-click = "pkill rofi || rofi -show drun -modi run;drun,filebrowser,window";
+          on-click = "vicinae toggle";
         };
 
         "custom/power" = {
