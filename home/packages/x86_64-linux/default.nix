@@ -17,6 +17,7 @@ in
       zoom-us
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       logisim-evolution
+      gimp
 
       # wayland desktop utils
       wl-clipboard

@@ -5,10 +5,10 @@
     settings = {
       mainBar = {
         layer = "top";
-        exclusive = true;
+        exclusive = false;
         passthrough = false;
         start-hidden = true;
-        margin-top = 233;
+        margin-top = 200;
 
         modules-center = [
           "clock"
@@ -16,7 +16,7 @@
           "battery"
         ];
         "clock" = {
-          format = " {:%H:%M}";
+          format = "{:%H:%M}";
           tooltip = false;
         };
 
@@ -25,16 +25,8 @@
             warning = 30;
             critical = 15;
           };
-          format = "{icon} {capacity}%";
-          format-charging = "󰂄 {capacity}%";
-          format-plugged = "󰚥 {capacity}%";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
+          format = "{capacity}%";
+          format-charging = "{capacity}%";
           tooltip-format = "{timeTo} — {power}W";
         };
         "custom/separator" = {

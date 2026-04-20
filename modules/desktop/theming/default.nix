@@ -181,7 +181,7 @@ in
       };
       monospace = lib.mkOption {
         type = lib.types.str;
-        default = "JetBrains Mono";
+        default = "JetBrainsMono Nerd Font";
       };
       emoji = lib.mkOption {
         type = lib.types.str;

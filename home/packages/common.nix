@@ -53,4 +53,5 @@ pkgs: with pkgs; [
   papirus-icon-theme
   xclip
   localsend
+  jq
 ]

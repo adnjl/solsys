@@ -3,7 +3,6 @@
   programs.kitty = {
     enable = true;
     themeFile = "Catppuccin-Mocha";
-    font.name = "CaskaydiaCove Nerd Font";
     settings = {
       font_size = 12;
       window_padding_width = "8 8 0";

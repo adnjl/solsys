@@ -6,6 +6,33 @@
   config,
   ...
 }:
+let
+  powermenu = pkgs.writeShellScriptBin "powermenu" ''
+    shutdown="$(printf '\uf16f')"
+    reboot="$(printf '\ue5d5')"
+    suspend="$(printf '\uef44')"
+    logout="$(printf '\ue9ba')"
+    chosen="$(echo -e "$shutdown\n$reboot\n$suspend\n$logout" | rofi -dmenu -config "$HOME/.config/rofi/powermenu.rasi")"
+    case "$chosen" in
+      "$shutdown") poweroff ;;
+      "$reboot") reboot ;;
+      "$suspend") systemctl suspend ;;
+      "$logout") niri msg action quit ;;
+      *) exit 0 ;;
+    esac
+  '';
+  overviewlistener = pkgs.writeShellScriptBin "overviewlistener" ''
+    niri msg --json event-stream | jq -c --unbuffered 'select(.OverviewOpenedOrClosed != null)' | \
+    while read -r event; do
+        is_open=$(echo "$event" | jq -r '.OverviewOpenedOrClosed.is_open')
+        if [ "$is_open" = "true" ]; then
+            pkill -SIGUSR2 waybar
+        else
+            pkill -SIGUSR1 waybar
+        fi
+    done
+  '';
+in
 {
   programs.niri = {
     settings = {
@@ -40,19 +67,19 @@
       };
 
       layout = {
-        gaps = 8;
+        gaps = 10;
         center-focused-column = "never";
         default-column-width.proportion = 0.5;
         focus-ring = {
           enable = true;
           active = {
-            # color = "#${config.lib.stylix.colors.base0D}";
-            color = "#69696c";
+            # color = "#1f1f1f";
+            color = "#312e28";
           };
           inactive = {
             color = "#${config.lib.stylix.colors.base02}";
           };
-          width = 1.5;
+          width = 2;
         };
         border.enable = false;
       };
@@ -116,7 +143,7 @@
             "grim -g \"$(slurp)\" - | swappy -f -"
           ];
 
-          "Super+Shift+Backspace".action.spawn = [ "wlogout" ];
+          "Super+Shift+Backspace".action.spawn = [ "${powermenu}/bin/powermenu" ];
 
           "Super+Shift+Q".action.close-window = { };
           "Super+Return".action.do-screen-transition = { };
@@ -203,10 +230,10 @@
         {
           matches = [ { } ];
           geometry-corner-radius = {
-            top-left = 4.0;
-            top-right = 4.0;
-            bottom-left = 4.0;
-            bottom-right = 4.0;
+            top-left = 0.0;
+            top-right = 0.0;
+            bottom-left = 0.0;
+            bottom-right = 0.0;
           };
           clip-to-geometry = true;
         }
@@ -229,7 +256,7 @@
       };
 
       overview = {
-        zoom = 0.75;
+        zoom = 0.6;
         backdrop-color = "#00000000";
       };
 
@@ -247,16 +274,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
     configPackages = [ osConfig.solSys.desktop.niri.package ];
   };
-  home.file.".local/bin/overviewlistener" = {
-    executable = true;
-    text = ''
-      #!/usr/bin/env bash
-      niri msg --json event-stream | jq -c --unbuffered 'select(.OverviewOpenedOrClosed != null)' | \
-      while read -r event; do
-          killall -SIGUSR1 waybar
-      done
-    '';
-  };
 
   systemd.user.services.overviewlistener = {
     Unit = {
@@ -265,11 +282,49 @@
       Requisite = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "%h/.local/bin/overviewlistener";
+      ExecStart = "${overviewlistener}/bin/overviewlistener";
       Restart = "on-failure";
     };
     Install = {
       WantedBy = [ "graphical-session.target" ];
     };
   };
+
+  xdg.configFile."rofi/themes/powermenu.rasi".text = ''
+    * {
+        font: "Material Symbols Rounded 48";
+        background-color: transparent;
+        text-color: rgba(255, 255, 255, 1);
+    }
+    window {
+        fullscreen: true;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    mainbox {
+        enabled: true;
+        padding: 40% 13%;
+        children: ["listview"];
+    }
+    listview {
+        columns: 4;
+        spacing: 2em;
+        flow: horizontal;
+        cycle: false;
+    }
+    element {
+        padding: 0.9em;
+        border-radius: 5px;
+    }
+    element-text {
+        horizontal-align: 0.5;
+    }
+    element.selected {
+        background-color: rgba(32, 32, 32, 0.85);
+    }
+  '';
+
+  xdg.configFile."rofi/powermenu.rasi".text = ''
+    @theme "themes/powermenu.rasi"
+  '';
+
 }

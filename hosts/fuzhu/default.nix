@@ -140,7 +140,7 @@
       name = "Bibata-Modern-Ice";
       size = 22;
     };
-    fonts.monospace = "CaskaydiaCove Nerd Font";
+    fonts.monospace = "JetBrainsMono Nerd Font";
   };
 
   solSys.gaming = {
