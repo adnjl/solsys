@@ -247,4 +247,29 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
     configPackages = [ osConfig.solSys.desktop.niri.package ];
   };
+  home.file.".local/bin/overviewlistener" = {
+    executable = true;
+    text = ''
+      #!/usr/bin/env bash
+      niri msg --json event-stream | jq -c --unbuffered 'select(.OverviewOpenedOrClosed != null)' | \
+      while read -r event; do
+          killall -SIGUSR1 waybar
+      done
+    '';
+  };
+
+  systemd.user.services.overviewlistener = {
+    Unit = {
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "%h/.local/bin/overviewlistener";
+      Restart = "on-failure";
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 }
