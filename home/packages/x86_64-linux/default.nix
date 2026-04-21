@@ -66,10 +66,10 @@ in
         vol_value=$(echo "$volume" | awk '{printf "%d", $2 * 100}')
         vol_status=$(echo "$volume" | cut -d" " -f3)
         if [ "$vol_status" = "[MUTED]" ]; then
-            notify-send -a "muted" -h int:value:"$vol_value" " ''${vol_value}% [MUTED]"
+            notify-send -a "muted" -h int:value:"$vol_value" ""
             exit 0
         fi
-        notify-send -a "volume" -h int:value:"$vol_value" " ''${vol_value}%"
+        notify-send -a "volume" -h int:value:"$vol_value" ""
       '')
 
       (pkgs.writeShellScriptBin "powermenu" ''
