@@ -7,20 +7,6 @@
   ...
 }:
 let
-  powermenu = pkgs.writeShellScriptBin "powermenu" ''
-    shutdown="$(printf '\uf16f')"
-    reboot="$(printf '\ue5d5')"
-    suspend="$(printf '\uef44')"
-    logout="$(printf '\ue9ba')"
-    chosen="$(echo -e "$shutdown\n$reboot\n$suspend\n$logout" | rofi -dmenu -config "$HOME/.config/rofi/powermenu.rasi")"
-    case "$chosen" in
-      "$shutdown") poweroff ;;
-      "$reboot") reboot ;;
-      "$suspend") systemctl suspend ;;
-      "$logout") niri msg action quit ;;
-      *) exit 0 ;;
-    esac
-  '';
   overviewlistener = pkgs.writeShellScriptBin "overviewlistener" ''
     niri msg --json event-stream | jq -c --unbuffered 'select(.OverviewOpenedOrClosed != null)' | \
     while read -r event; do
@@ -144,8 +130,9 @@ in
             "-c"
             "grim -g \"$(slurp)\" - | swappy -f -"
           ];
+          "Super+Shift+R".action.spawn = [ "pavucontrol" ];
 
-          "Super+Shift+Backspace".action.spawn = [ "${powermenu}/bin/powermenu" ];
+          "Super+Shift+Backspace".action.spawn = [ "powermenu" ];
 
           "Super+Shift+Q".action.close-window = { };
           "Super+Return".action.do-screen-transition = { };
@@ -201,19 +188,31 @@ in
             "set"
             "5%-"
           ];
+          # "XF86AudioRaiseVolume".action.spawn = [
+          #   "pamixer"
+          #   "-i"
+          #   "5"
+          # ];
+          # "XF86AudioLowerVolume".action.spawn = [
+          #   "pamixer"
+          #   "-d"
+          #   "5"
+          # ];
+          # "XF86AudioMute".action.spawn = [
+          #   "pamixer"
+          #   "-t"
+          # ];
           "XF86AudioRaiseVolume".action.spawn = [
-            "pamixer"
-            "-i"
-            "5"
+            "volume-control"
+            "up"
           ];
           "XF86AudioLowerVolume".action.spawn = [
-            "pamixer"
-            "-d"
-            "5"
+            "volume-control"
+            "down"
           ];
           "XF86AudioMute".action.spawn = [
-            "pamixer"
-            "-t"
+            "volume-control"
+            "mute"
           ];
         };
 

@@ -1,11 +1,11 @@
-{ ... }:
+{ lib, ... }:
 {
 
   services.mako = {
     enable = true;
     settings = {
-      font = "JetBrainsMono Nerd Font 10";
-      background-color = "#080808e6";
+      # font = "JetBrainsMono Nerd Font 10";
+      background-color = lib.mkForce "#16161D";
       border-size = 0;
       border-radius = 8;
 
@@ -16,9 +16,9 @@
         width = 200;
         border-size = 28;
         border-radius = 14;
-        border-color = "#000000e6";
-        background-color = "#323232ff";
-        progress-color = "source #ffffffff";
+        border-color = lib.mkForce "#000000e6";
+        background-color = lib.mkForce "#16161D";
+        progress-color = lib.mkForce "source #C8C093";
         outer-margin = "0,0,20,0";
         padding = 1;
         layer = "overlay";
@@ -32,9 +32,9 @@
         width = 200;
         border-size = 28;
         border-radius = 14;
-        border-color = "#00000080";
-        background-color = "#32323280";
-        progress-color = "source #ffffff80";
+        border-color = lib.mkForce "#00000080";
+        background-color = lib.mkForce "#32323280";
+        progress-color = lib.mkForce "source #43242B";
         outer-margin = "0,0,20,0";
         padding = 1;
         layer = "overlay";

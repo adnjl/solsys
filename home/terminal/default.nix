@@ -14,7 +14,8 @@
     };
     keybindings = {
       "kitty_mod+h" = "show_scrollback";
-      "ctrl+v" = "paste_from_clipboard";
+      "ctrl+shift+v" = "paste_from_clipboard"; # move paste to ctrl+shift+v
+      "ctrl+v" = "no_op"; # let ctrl+v pass through to nvim
     };
   };
 

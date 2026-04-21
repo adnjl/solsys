@@ -12,8 +12,8 @@
         [ ../dms ]
       else
         [
-          ../../waybar
-          ../../mako
+          ./waybar
+          ./mako
         ]
     );
 }
