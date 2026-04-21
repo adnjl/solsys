@@ -8,6 +8,7 @@
     [
       ../../home/core.nix
       ../../home/terminal
+      ../../home/shell
       ../../home/programs/${system}
       ../../home/packages/${system}
     ]
@@ -18,13 +19,5 @@
         [ ../../home/wm/niri ]
       else
         [ ]
-    )
-    ++ (
-      if osConfig.solSys.desktop.shell == "quickshell" then
-        [ ../../home/shell/quickshell ]
-      else if osConfig.solSys.desktop.shell == "dms" then
-        [ ../../home/shell/dms ]
-      else
-        [ ../../home/shell/waybar ]
     );
 }

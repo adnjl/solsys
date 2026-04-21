@@ -54,4 +54,5 @@ pkgs: with pkgs; [
   xclip
   localsend
   jq
+  mako
 ]

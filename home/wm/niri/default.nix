@@ -79,7 +79,7 @@ in
           inactive = {
             color = "#${config.lib.stylix.colors.base02}";
           };
-          width = 2;
+          width = 5;
         };
         border.enable = false;
       };
@@ -99,11 +99,13 @@ in
         }
         {
           command = [
-            "swaybg"
-            "-i"
-            "${inputs.wallpapers}/desk.jpg"
-            "-m"
-            "fill"
+            # "swaybg"
+            # "-i"
+            # "${inputs.wallpapers}/desk.jpg"
+            # "-m"
+            # "fill"
+            "waypaper"
+            "--restore"
           ];
         }
         {
