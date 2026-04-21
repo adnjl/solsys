@@ -18,7 +18,7 @@ let
       palette = {
         base00 = "181616";
         base01 = "0d0c0c";
-        base02 = "2d4f67";
+        base02 = "8ba4b0";
         base03 = "a6a69c";
         base04 = "7fb4ca";
         base05 = "c5c9c5";

@@ -17,7 +17,9 @@ let
         (
           { pkgs, ... }:
           {
-            programs.niri.package = lib.mkForce inputs.niri.packages.${pkgs.system}.niri-unstable;
+            programs.niri.package =
+              lib.mkForce
+                inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
           }
         )
       ];

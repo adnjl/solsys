@@ -1,89 +1,61 @@
 format = """
-[╭](fg:current_line)\
+[╭](bold overlay1)  \
 $directory\
 $git_branch\
 $git_status\
-$fill\
-$nodejs\
-$bun\
-$deno\
-$aws\
-$cmd_duration\
-$shell\
-$username\
-$line_break\
-$character\
-"""
+$kubernetes \
+$time \
+\n$character"""
 
-palette      = 'dracula'
-add_newline  = true
+palette = 'gruvbox'
 
-[palettes.dracula]
-foreground   = '#d1d1d1'
-background   = '#282A36'
-current_line = '#252525'
-primary      = '#1E1F29'
-box          = '#252525'
-blue         = '#6272A4'
-cyan         = '#8BE9FD'
-green        = '#50FA7B'
-orange       = '#FFB86C'
-pink         = '#FF79C6'
-purple       = '#BD93F9'
-red          = '#FF5555'
-yellow       = '#F1FA8C'
-
-[directory]
-format     = '[─](fg:current_line)[](fg:box)[󰷏 ](fg:foreground bg:box)[$path](fg:foreground bg:box)[](fg:box)'
-home_symbol = "~"
-
-[git_branch]
-format = '[─](fg:current_line)[](fg:box)[$symbol](fg:green bg:box)[ $branch](fg:foreground bg:box)'
-symbol = ' '
-
-[git_status]
-format = '[( $all_status)](fg:foreground bg:box)[](fg:box)'
-
-[nodejs]
-format       = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
-detect_files = ["package.json", ".node-version", "!bunfig.toml", "!bun.lockb"]
-
-[bun]
-format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
-symbol = '🥟'
-
-[deno]
-format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
-symbol = '🦕'
-
-[aws]
-format = '[─](fg:current_line)[](fg:purple)[$symbol](fg:primary bg:purple)[](fg:purple bg:box)[ $profile](fg:foreground bg:box)[](fg:box)'
-symbol = '☁️'
-
-[fill]
-symbol = '─'
-style  = 'fg:current_line'
-
-[cmd_duration]
-min_time = 500
-format   = '[─](fg:current_line)[](fg:box)[ ](fg:foreground bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)'
-
-[shell]
-format   = '[─](fg:current_line)[](fg:box)[ ](fg:blue bg:box)[ $indicator](fg:foreground bg:box)[](fg:box)'
-disabled = false
-
-[time]
-format      = '[─](fg:current_line)[](fg:purple)[󰦖 ](fg:primary bg:purple)[](fg:purple bg:box)[ $time](fg:foreground bg:box)[](fg:box)'
-time_format = '%H:%M'
-disabled    = false
-
-[username]
-format     = '[─](fg:current_line)[](fg:box)[ ](fg:yellow bg:box)[ $user](fg:foreground bg:box)[](fg:box) '
-show_always = true
+[palettes.gruvbox]
+color_fg0 = '#ebdbb2'   # text foreground
+color_bg0 = '#3C4841'
+color_bg1 = '#3c3836'
+color_bg3 = '#665c54'
+color_blue = '#458588'
+color_aqua = '#689d6a'
+color_green = '#98971a'
+color_orange = '#d65d0e'
+color_red = '#cc241d'
+color_yellow = '#d79921'
 
 [character]
-format         = """
-[│](fg:current_line)
-[╰─$symbol](fg:current_line) """
-success_symbol = '[➜](fg:bold foreground)'
-error_symbol   = '[×](fg:bold red)'
+format = """
+[╰─$symbol](fg:overlay1) """
+success_symbol = '[](fg:bold text)'
+error_symbol = '[](fg:bold red)'
+
+[directory]
+# style = "fg:color_fg0 bg:color_bg0"
+format = '$path'
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+style = "fg:color_yellow"
+disabled = false
+symbol = ""
+format = '( | [$symbol]($style) $branch)'
+
+[git_status]
+disabled = false
+style = "fg:color_orange"
+format = '( [$all_status]($style))'
+
+[kubernetes]
+disabled = false
+style = "fg:color_yellow"
+format = '( | [$context]($style)( in [$namespace]($style)))'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+format = '| $time'

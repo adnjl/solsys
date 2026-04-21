@@ -53,7 +53,7 @@ in
       };
 
       layout = {
-        gaps = 10;
+        gaps = 15;
         center-focused-column = "never";
         default-column-width.proportion = 0.5;
         focus-ring = {
@@ -188,20 +188,6 @@ in
             "set"
             "5%-"
           ];
-          # "XF86AudioRaiseVolume".action.spawn = [
-          #   "pamixer"
-          #   "-i"
-          #   "5"
-          # ];
-          # "XF86AudioLowerVolume".action.spawn = [
-          #   "pamixer"
-          #   "-d"
-          #   "5"
-          # ];
-          # "XF86AudioMute".action.spawn = [
-          #   "pamixer"
-          #   "-t"
-          # ];
           "XF86AudioRaiseVolume".action.spawn = [
             "volume-control"
             "up"

@@ -2,7 +2,7 @@
 {
   programs.kitty = {
     enable = true;
-    themeFile = "Catppuccin-Mocha";
+    # themeFile = "Catppuccin-Mocha";
     settings = {
       font_size = 12;
       window_padding_width = "8 8 0";
@@ -16,6 +16,7 @@
       "kitty_mod+h" = "show_scrollback";
       "ctrl+shift+v" = "paste_from_clipboard"; # move paste to ctrl+shift+v
       "ctrl+v" = "no_op"; # let ctrl+v pass through to nvim
+      "ctrl+backspace" = "send_text all \\x17";
     };
   };
 

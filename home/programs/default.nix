@@ -102,7 +102,7 @@
       displaySidebarTools = false;
       tabs.vertical.enable = true;
       border = {
-        color = "#000000";
+        color = "#312e28";
       };
     };
   };
