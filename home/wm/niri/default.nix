@@ -37,6 +37,10 @@ in
         };
         mouse = {
           accel-speed = 0.5;
+          accel-profile = "flat";
+        };
+        trackball = {
+          accel-speed = -0.8;
           accel-profile = "adaptive";
         };
       };

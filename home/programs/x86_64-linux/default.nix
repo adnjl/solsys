@@ -12,6 +12,7 @@ in
   imports = [
     commonPrograms
     inputs.spicetify-nix.homeManagerModules.default
+    ./rofi
   ];
 
   services.easyeffects = {
