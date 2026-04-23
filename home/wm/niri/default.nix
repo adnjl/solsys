@@ -63,7 +63,6 @@ in
         focus-ring = {
           enable = true;
           active = {
-            # color = "#1f1f1f";
             color = "#312e28";
           };
           inactive = {
@@ -80,20 +79,15 @@ in
 
       spawn-at-startup = [
         { command = [ "awww-daemon" ]; }
+        # {
+        #   command = [
+        #     "bash"
+        #     "-c"
+        #     "sleep 2 && awww img ${inputs.wallpapers}/desk.jpg"
+        #   ];
+        # }
         {
           command = [
-            "bash"
-            "-c"
-            "sleep 2 && awww img ${inputs.wallpapers}/desk.jpg"
-          ];
-        }
-        {
-          command = [
-            # "swaybg"
-            # "-i"
-            # "${inputs.wallpapers}/desk.jpg"
-            # "-m"
-            # "fill"
             "waypaper"
             "--restore"
           ];
@@ -119,9 +113,6 @@ in
           "Super+B".action.spawn = [ "firefox" ];
           "Super+E".action.spawn = [ "dolphin" ];
           "Super+Space".action.spawn = [
-            # "bash"
-            # "-c"
-            # "pkill -x rofi || rofi -show drun"
             "vicinae"
             "toggle"
           ];
@@ -129,11 +120,7 @@ in
             "hyprpicker"
             "-a"
           ];
-          "Super+P".action.spawn = [
-            "bash"
-            "-c"
-            "grim -g \"$(slurp)\" - | swappy -f -"
-          ];
+          "Super+P".action.screenshot = { };
           "Super+Shift+R".action.spawn = [ "pavucontrol" ];
 
           "Super+Shift+Backspace".action.spawn = [ "powermenu" ];
@@ -183,14 +170,19 @@ in
         }
         // lib.optionalAttrs (osConfig.solSys.desktop.shell == "none") {
           "XF86MonBrightnessUp".action.spawn = [
-            "brightnessctl"
-            "set"
-            "5%+"
+            # "brightnessctl"
+            # "set"
+            # "5%+"
+            "brightness-control"
+            "up"
           ];
           "XF86MonBrightnessDown".action.spawn = [
-            "brightnessctl"
-            "set"
-            "5%-"
+            # "brightnessctl"
+            # "set"
+            # "5%-"
+            "brightness-control"
+            "down"
+
           ];
           "XF86AudioRaiseVolume".action.spawn = [
             "volume-control"
