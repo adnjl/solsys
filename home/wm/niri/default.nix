@@ -18,6 +18,13 @@ let
         fi
     done
   '';
+
+  wallpaperInit = pkgs.writeShellScriptBin "wallpaper-init" ''
+    sleep 1
+    IMG=$(grep "^wallpaper" ~/.config/waypaper/config.ini | cut -d= -f2 | xargs)
+    swaybg -i "$IMG" &
+    awww img "$IMG"
+  '';
 in
 {
   programs.niri = {
@@ -82,12 +89,7 @@ in
 
       spawn-at-startup = [
         { command = [ "awww-daemon" ]; }
-        {
-          command = [
-            "waypaper"
-            "--restore"
-          ];
-        }
+        { command = [ "${wallpaperInit}/bin/wallpaper-init" ]; }
         {
           command = [
             "vicinae"

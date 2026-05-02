@@ -98,7 +98,6 @@
   textfox = {
     enable = true;
     profiles = [ "aden" ];
-    useLegacyExtensions = false;
     config = {
       displayWindowControls = false;
       displayNavButtons = true;
