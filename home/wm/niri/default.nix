@@ -22,6 +22,9 @@ in
 {
   programs.niri = {
     settings = {
+      includes = lib.mkAfter [
+        (./blur.kdl)
+      ];
       input = {
         keyboard = {
           xkb = {
@@ -40,8 +43,8 @@ in
           accel-profile = "flat";
         };
         trackball = {
-          accel-speed = -0.8;
-          accel-profile = "adaptive";
+          accel-speed = -0.3;
+          accel-profile = "flat";
         };
       };
 
@@ -79,13 +82,6 @@ in
 
       spawn-at-startup = [
         { command = [ "awww-daemon" ]; }
-        # {
-        #   command = [
-        #     "bash"
-        #     "-c"
-        #     "sleep 2 && awww img ${inputs.wallpapers}/desk.jpg"
-        #   ];
-        # }
         {
           command = [
             "waypaper"
@@ -170,19 +166,14 @@ in
         }
         // lib.optionalAttrs (osConfig.solSys.desktop.shell == "none") {
           "XF86MonBrightnessUp".action.spawn = [
-            # "brightnessctl"
-            # "set"
-            # "5%+"
-            "brightness-control"
-            "up"
+            "brightnessctl"
+            "set"
+            "5%+"
           ];
           "XF86MonBrightnessDown".action.spawn = [
-            # "brightnessctl"
-            # "set"
-            # "5%-"
-            "brightness-control"
-            "down"
-
+            "brightnessctl"
+            "set"
+            "5%-"
           ];
           "XF86AudioRaiseVolume".action.spawn = [
             "volume-control"
@@ -198,18 +189,7 @@ in
           ];
         };
 
-      # blur = {
-      #   passes = 3;
-      #   offset = 3.0;
-      #   noise = 0.02;
-      #   saturation = 1.5;
-      # };
-
       window-rules = [
-        # {
-        #   matches = [ { } ];
-        #   background-effect.blur = true;
-        # }
         {
           matches = [ { } ];
           geometry-corner-radius = {
@@ -234,13 +214,9 @@ in
         }
       ];
 
-      gestures = {
-        hot-corners.enable = false;
-      };
-
       overview = {
         zoom = 0.6;
-        backdrop-color = "#00000000";
+        backdrop-color = "transparent";
       };
 
       layer-rules = [

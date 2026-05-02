@@ -46,21 +46,7 @@ in
       pciutils
       usbutils
       gpu-screen-recorder
-
-      (pkgs.writeShellScriptBin "brightness-control" ''
-        case "$1" in
-            up)
-                brightnessctl set 5%+
-                ;;
-            down)
-                brightnessctl set 5%-
-                ;;
-        esac
-        brightness=$(brightnessctl get)
-        bright_val=$(echo "$brightness" | awk '{printf "%d", $2 * 100}')
-        bright_status=$(echo "$brightness" | cut -d" " -f3)
-        notify-send -a "brightness" -h int:value:"$bright_val" ""
-      '')
+      winboat
 
       (pkgs.writeShellScriptBin "volume-control" ''
         step=0.01

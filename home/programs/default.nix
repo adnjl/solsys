@@ -74,6 +74,7 @@
   };
 
   stylix.targets.firefox.profileNames = [ "aden" ];
+
   programs.firefox = {
     enable = true;
     # package = pkgs.firefox-devedition-unwrapped;
@@ -93,9 +94,11 @@
       ];
     };
   };
+
   textfox = {
     enable = true;
     profiles = [ "aden" ];
+    useLegacyExtensions = false;
     config = {
       displayWindowControls = false;
       displayNavButtons = true;

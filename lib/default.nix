@@ -17,9 +17,7 @@ let
         (
           { pkgs, ... }:
           {
-            programs.niri.package =
-              lib.mkForce
-                inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
+            programs.niri.package = lib.mkForce pkgs.niri;
           }
         )
       ];
@@ -52,6 +50,12 @@ in
           { home-manager = mkHomeManager { inherit username specialArgs; }; }
           { programs.nix-ld.dev.enable = true; }
           { nixpkgs.overlays = [ inputs.nur.overlays.default ] ++ overlays; }
+          {
+            users.users.${username}.extraGroups = [
+              "video"
+              "input"
+            ];
+          }
           {
             nix.settings = {
               max-jobs = "auto";

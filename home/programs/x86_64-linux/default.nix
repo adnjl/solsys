@@ -37,6 +37,7 @@ in
       enable = true;
       alwaysEnableDevTools = true;
       wayland = true;
+      spotifyLaunchFlags = "--enable-transparent-visuals";
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         hidePodcasts

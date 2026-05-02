@@ -15,9 +15,9 @@ in
       type = lib.types.listOf lib.types.package;
       default = with pkgs; [
         osu-lazer-bin
-        mangohud
-        lunar-client
-        lutris
+        # mangohud
+        # lunar-client
+        # lutris
       ];
     };
     steam = {
