@@ -4,3 +4,9 @@ window-rule {
         xray false
     }
 }
+
+gestures {
+    hot-corners {
+        off
+    }
+}

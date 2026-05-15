@@ -30,7 +30,7 @@ in
   programs.niri = {
     settings = {
       includes = lib.mkAfter [
-        (./blur.kdl)
+        (./config.kdl)
       ];
       input = {
         keyboard = {

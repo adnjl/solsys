@@ -1,6 +1,5 @@
 { osConfig, system, ... }:
 {
-
   # if osConfig.solSys.desktop.shell == "quickshell" then
   #   [ ../quickshell ]
   imports =
