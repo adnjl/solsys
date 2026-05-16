@@ -10,6 +10,7 @@
     ../../modules/system/boot
     ../../modules/system/form
     ../../modules/desktop/wm
+    ../../modules/desktop/shell
     ../../modules/desktop/greeter
     ../../modules/desktop/theming
     ../../modules/platform/linux
@@ -40,7 +41,7 @@
 
   solSys.gaming = {
     enable = true;
-    extraPackages = [ ];
+    # extraPackages = [ ];
   };
 
   solSys.core = {
@@ -55,7 +56,7 @@
       inner = 5;
       outer = 10;
     };
-    blur = true;
+    shell = "none";
     tearing = true;
     terminal = "kitty";
     browser = "firefox-devedition";

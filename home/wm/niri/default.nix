@@ -46,7 +46,7 @@ in
           accel-profile = "adaptive";
         };
         mouse = {
-          accel-speed = 0.5;
+          accel-speed = 0.3;
           accel-profile = "flat";
         };
         trackball = {

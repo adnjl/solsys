@@ -11,6 +11,7 @@ let
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = specialArgs;
+      backupFileExtension = "backup";
       users.${username} = import ../users/${username}/home.nix;
       sharedModules = [
         inputs.niri.homeModules.niri
